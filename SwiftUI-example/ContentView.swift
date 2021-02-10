@@ -23,10 +23,15 @@ struct ContentView: View {
                         .foregroundColor(.white)
                 }
                 HStack(spacing: 6){
-                    self.makeButton(key: .allClear, bgColor: Color(white: 0.2, opacity:1.0))
+                    if env.display != "0" {
+                        self.makeButton(key: .clear, bgColor: Color(white: 0.2, opacity:1.0))
+                    }else{
+                        self.makeButton(key: .allClear, bgColor: Color(white: 0.2, opacity:1.0))
+                    }
+                    
                     self.makeButton(key: .plusMinus, bgColor: Color(white: 0.2, opacity:1.0))
                     self.makeButton(key: .percent, bgColor: Color(white: 0.2, opacity:1.0))
-                    self.makeButton(key: .divide, bgColor: Color(white: 0.2, opacity:1.0))
+                    self.makeButton(key: .divide, bgColor: .green)
                 }
                 HStack(spacing: 6){
                     self.makeButton(key: .seven)
@@ -53,7 +58,6 @@ struct ContentView: View {
                     self.makeButton(key: .zero)
                     self.makeButton(key: .dot)
                     self.makeButton(key: .equal, width: 140, bgColor: .green)
-                    
                 }
                 
                 Spacer(minLength: 10)
@@ -77,9 +81,11 @@ struct ContentView: View {
 }
 
 
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environmentObject(GlobalState())
     }
 }
+
+
+

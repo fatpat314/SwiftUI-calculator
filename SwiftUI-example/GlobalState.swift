@@ -21,7 +21,7 @@ class GlobalState: ObservableObject {
                 display = key.rawValue
                 beginInput = false
             } else {
-                display = display + key.rawValue
+                display = key.rawValue
             }
         case .plus, .minus, .muliply, .divide:
             if storedValue == nil{
@@ -50,11 +50,17 @@ class GlobalState: ObservableObject {
                 display = CalculatorKey.minus.rawValue + display
             }
             
-        case .allClear, .clear:
+        case .clear:
             display = CalculatorKey.zero.rawValue
+            
+        case .allClear:
+            display = CalculatorKey.zero.rawValue
+            storedValue = nil
             
         case .equal:
             calculate()
+            storedValue = nil
+            
         default:
             break
         }
